@@ -144,7 +144,7 @@ export default class Articles extends Vue {
   
   private async handleSearch(): Promise<void> {
     this.isLoading = true;
-    const data: ArticlesData = await this.$https.post(
+    const data: ArticlesData = await this.$https.get(
       this.$urls.getArticleList,
       {
         params: this.params
