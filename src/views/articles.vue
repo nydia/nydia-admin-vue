@@ -5,27 +5,27 @@
     <ul class="articles-list"
         id="list">
       <transition-group name="el-fade-in">
-        <li @click="articleDetail(article._id)"
+        <li @click="articleDetail(article.id)"
             v-for="(article) in articlesList"
-            :key="article._id"
+            :key="article.id"
             class="item">
-          <a :href="href + article._id"
+          <a :href="href + article.id"
              target="_blank">
             <img class="wrap-img img-blur-done"
-                 :data-src="article.img_url"
+                 :data-src="article.imgUrl"
                  data-has-lazy-src="false"
                  src="../assets/bg.jpg"
                  alt="文章封面" />
             <div class="content">
               <h4 class="title">{{article.title}}</h4>
-              <p class="abstract">{{article.desc}}</p>
+              <p class="abstract">{{article.remarks}}</p>
               <div class="meta">
                 <span>查看 {{article.meta.views}}</span>
                 <span>评论 {{article.meta.comments}}</span>
                 <span>赞 {{article.meta.likes}}</span>
-                <span v-if="article.create_time"
+                <span v-if="article.createDate"
                       class="time">
-                  {{formatTime(article.create_time)}}
+                  {{formatTime(article.createDate)}}
                 </span>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default class Articles extends Vue {
   
   private async handleSearch(): Promise<void> {
     this.isLoading = true;
-    const data: ArticlesData = await this.$https.get(
+    const data: ArticlesData = await this.$https.post(
       this.$urls.getArticleList,
       {
         params: this.params

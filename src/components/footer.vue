@@ -1,6 +1,6 @@
 
 <template>
-  <div class="footer"> 全栈修炼 ©2018 Created by BiaoChenXuYing </div>
+  <div class="footer"> 全栈修炼 ©2020 Created by Nydia </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
